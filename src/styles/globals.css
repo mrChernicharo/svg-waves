@@ -17,6 +17,17 @@ a {
   text-decoration: none;
 }
 
+button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  transition: 0.25s;
+}
+
+button:hover {
+  opacity: 0.6;
+}
+
 * {
   box-sizing: border-box;
 }
