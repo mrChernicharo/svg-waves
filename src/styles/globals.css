@@ -19,9 +19,12 @@ a {
 
 button {
   background-color: transparent;
-  border: none;
+  border: 1px solid #000;
   color: #fff;
   transition: 0.25s;
+  display: flex;
+  padding: 0;
+  cursor: pointer;
 }
 
 button:hover {
