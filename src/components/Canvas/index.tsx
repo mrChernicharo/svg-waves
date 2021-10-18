@@ -12,11 +12,13 @@ import Image from 'next/image';
 import { Container } from './Styles';
 
 export default function Canvas() {
-  // const { width: windowWidth, height: windowHeight } = useWindowSize();
-  const [canvasSize, setCanvasSize] = useState<ISize>({ width: 0, height: 0 });
+  const { width: windowWidth, height: windowHeight } = useWindowSize();
+  const [canvasSize, setCanvasSize] = useState<ISize>();
 
   function handleCanvasResize(size: ISize) {
-    setCanvasSize(size);
+    const canvasEl = document.querySelector('#canvas');
+    const { width: canvasWidth } = canvasEl?.getBoundingClientRect() as DOMRect;
+    setCanvasSize({ width: canvasWidth, height: size.height });
   }
 
   useEffect(() => {
@@ -24,9 +26,7 @@ export default function Canvas() {
   }, []);
 
   useEffect(() => {
-    console.log(canvasSize);
-
-    updateCanvas(canvasSize);
+    if (canvasSize) updateCanvas(canvasSize);
   }, [canvasSize]);
 
   return (
