@@ -18,7 +18,7 @@ export default function Canvas() {
   function handleCanvasResize(size: ISize) {
     const canvasEl = document.querySelector('#canvas');
     const { width: canvasWidth } = canvasEl?.getBoundingClientRect() as DOMRect;
-    setCanvasSize({ width: canvasWidth, height: size.height });
+    setCanvasSize({ width: canvasWidth || 300, height: size.height });
   }
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function Canvas() {
   }, []);
 
   useEffect(() => {
-    if (canvasSize) updateCanvas(canvasSize);
+    if (canvasSize && window) updateCanvas(canvasSize);
   }, [canvasSize]);
 
   return (
